@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren's Melody Challenge</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'), #f1f8f6;
+            color: #1e3932;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #00704a;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 70px);
+            grid-gap: 15px;
+            margin: 20px 0;
+        }
+
+        .game-cell {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #1e3932;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+
+        .game-cell.correct {
+            background-color: #00704a;
+            color: white;
+        }
+
+        .game-cell.present {
+            background-color: #d4e9e2;
+        }
+
+        .game-cell.absent {
+            background-color: #f1f8f6;
+        }
+
+        .check-button {
+            background-color: #00704a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .check-button:hover {
+            background-color: #1e3932;
+        }
+
+        footer {
+            background-color: #1e3932;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .decoration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            background-color: #00704a;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px; 
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Siren's Melody Challenge</h1>
+    </header>
+    <main>
+        <div class="decoration"></div>
+        <div class="game-grid">
+            <div class="game-cell">S</div>
+            <div class="game-cell">O</div>
+            <div class="game-cell">N</div>
+            <div class="game-cell">G</div>
+            <div class="game-cell">S</div>
+            <!-- Add more rows as needed -->
+        </div>
+        <button class="check-button" onclick="showModal()">Check Guess</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Starbucks with Spotify Partnership. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>That is correct! You earned 5 stars!</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to display the modal
+        function showModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Close the modal when the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
